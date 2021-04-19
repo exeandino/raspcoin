@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// Sample token contract
+// Raspcoin token contract
 //
 // Symbol        : RASP
 // Name          : RASPCOIN
@@ -16,7 +16,7 @@ pragma solidity ^0.4.24;
 
 
 // ----------------------------------------------------------------------------
-// Lib: Safe Math
+// Lib: Matemáticas seguras
 // ----------------------------------------------------------------------------
 contract SafeMath {
 
@@ -60,15 +60,15 @@ contract ERC20Interface {
 
 
 /**
-Contract function to receive approval and execute function in one call
-Borrowed from MiniMeToken
+Función de contrato para recibir aprobación y ejecutar la función en una llamada
+Tomado prestado de MiniMeToken
 */
 contract ApproveAndCallFallBack {
     function receiveApproval(address from, uint256 tokens, address token, bytes data) public;
 }
 
 /**
-ERC20 Token, with the addition of symbol, name and decimals and assisted token transfers
+Token ERC20, con la adición de símbolo, nombre y decimales y transferencias de token asistidas
 */
 contract SYSTEMEX is ERC20Interface, SafeMath {
     string public symbol;
@@ -94,7 +94,7 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
 
 
     // ------------------------------------------------------------------------
-    // Total supply
+    // Suministro total
     // ------------------------------------------------------------------------
     function totalSupply() public constant returns (uint) {
         return _totalSupply  - balances[address(0)];
@@ -102,7 +102,7 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
 
 
     // ------------------------------------------------------------------------
-    // Get the token balance for account tokenOwner
+    // Obtenga el saldo del token para la cuenta tokenOwner
     // ------------------------------------------------------------------------
     function balanceOf(address tokenOwner) public constant returns (uint balance) {
         return balances[tokenOwner];
@@ -110,8 +110,8 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
 
 
     // ------------------------------------------------------------------------
-    // Transfer the balance from token owner's account to to account
-    // - Owner's account must have sufficient balance to transfer
+    // Transferir el saldo de la cuenta del propietario del token a la cuenta
+    // - La cuenta del propietario debe tener saldo suficiente para transferir
     // - 0 value transfers are allowed
     // ------------------------------------------------------------------------
     function transfer(address to, uint tokens) public returns (bool success) {
@@ -127,8 +127,8 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
     // from the token owner's account
     //
     // https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md
-    // recommends that there are no checks for the approval double-spend attack
-    // as this should be implemented in user interfaces 
+    // recomienda que no haya comprobaciones para el ataque de doble gasto de aprobación
+    // ya que esto debería implementarse en las interfaces de usuario
     // ------------------------------------------------------------------------
     function approve(address spender, uint tokens) public returns (bool success) {
         allowed[msg.sender][spender] = tokens;
@@ -138,7 +138,7 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
 
 
     // ------------------------------------------------------------------------
-    // Transfer tokens from the from account to the to account
+    // Transferir tokens desde la cuenta a la cuenta
     // 
     // The calling account must already have sufficient tokens approve(...)-d
     // for spending from the from account and
@@ -156,8 +156,8 @@ contract SYSTEMEX is ERC20Interface, SafeMath {
 
 
     // ------------------------------------------------------------------------
-    // Returns the amount of tokens approved by the owner that can be
-    // transferred to the spender's account
+    // Devuelve la cantidad de tokens aprobados por el propietario que se pueden
+    // transferiR a la cuenta del gastador
     // ------------------------------------------------------------------------
     function allowance(address tokenOwner, address spender) public constant returns (uint remaining) {
         return allowed[tokenOwner][spender];
