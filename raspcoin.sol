@@ -11,7 +11,7 @@ pragma solidity ^0.4.24;
 //
 // Enjoy.
 //
-// (c) by Exequiel Andino 2021. MIT Licence.
+// (c) by Raspcoin www.raspcoin.org
 // ----------------------------------------------------------------------------
 
 
